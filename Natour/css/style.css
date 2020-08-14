@@ -37,13 +37,13 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 40px;
   left: 40px;
 }
 
-.logo {
+.header__logo {
   height: 35px;
 }
 
@@ -55,7 +55,7 @@ body {
   margin-bottom: 60px;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
   font-size: 60px;
   font-weight: 400;
@@ -74,7 +74,7 @@ body {
     */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-weight: 700;
   font-size: 20px;
@@ -82,7 +82,7 @@ body {
   animation: moveInRight 1s ease-out;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -125,6 +125,25 @@ body {
   }
 }
 
+/**ANIMATION 3*/
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  80% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
 .btn:link,
 .btn:visited {
   text-transform: uppercase;
@@ -133,9 +152,10 @@ body {
   display: inline-block;
   border-radius: 100px;
   transition: all .2s;
+  position: relative;
 }
 
-.btn-white{
+.btn--white{
   background-color: #fff;
   color: #777777;
 }
@@ -148,4 +168,32 @@ body {
 .btn:active{
   transform: translateY(-1px);
   box-shadow: 0 5px 10px 10px rgb(0,0,0,.2);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  display: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scale(1.2) scaleY(1.6); /** Duplicate the size*/
+  opacity: 0;
+}
+
+.btn--animated{
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; /*do the animation before the first status*/
 }
