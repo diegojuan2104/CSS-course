@@ -1,174 +1,106 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: inherit;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: 16px;
   line-height: 1.7;
-  color: #777777;
-  padding: 30px;
-}
-
-.header {
-  height: 95vh;
-  position: relative;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(42, 163, 127, 0.8),
-      rgba(40, 180, 131, 0.8)
-    ),
-    url(../img/hero.jpg);
-  border-style: cover;
-  background-position: top;
-
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-}
-
-.header__logo-box {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-}
-
-.header__logo {
-  height: 35px;
-}
+  color: #777;
+  padding: 30px; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-
-  backface-visibility: hidden; /**No shakin'*/
-  margin-bottom: 60px;
-}
-
-.heading-primary--main {
-  display: block;
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 35px;
-
-
-  /** ANIMATIO N */
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-
-  /**
-        animation-delay: 2s;
-        animation-timin-count:; 
-
-    */
-}
-
-.heading-primary--sub {
-  display: block;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 17.4px;
-  animation: moveInRight 1s ease-out;
-}
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+  backface-visibility: hidden;
+  /**No shakin'*/
+  margin-bottom: 60px; }
+  .heading-primary--sub {
+    display: block;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out; }
+  .heading-primary--main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    /** ANIMATIO N */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /**
+            animation-delay: 2s;
+            animation-timin-count:; 
+    
+        */ }
 
 /**ANIMATION 1**/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
-  }
-
+    transform: translateX(-100px); }
   80% {
-    transform: translateX(10px);
-  }
-
+    transform: translateX(10px); }
   100% {
     opacity: 1;
-    transform: translate(0);
-  }
-}
+    transform: translate(0); } }
 
 /**ANIMATION 2*/
-
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
-  }
-
+    transform: translateX(100px); }
   80% {
-    transform: translateX(-10px);
-  }
-
+    transform: translateX(-10px); }
   100% {
     opacity: 1;
-    transform: translate(0);
-  }
-}
+    transform: translate(0); } }
 
 /**ANIMATION 3*/
-
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
-  }
-
+    transform: translateY(30px); }
   80% {
-    transform: translateY(-5px);
-  }
-
+    transform: translateY(-5px); }
   100% {
     opacity: 1;
-    transform: translate(0);
-  }
-}
+    transform: translate(0); } }
 
-
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding:15px 40px;
+  padding: 15px 40px;
   display: inline-block;
   border-radius: 100px;
-  transition: all .2s;
-  position: relative;
-}
+  transition: all 0.2s;
+  position: relative; }
 
-.btn--white{
+.btn--white {
   background-color: #fff;
-  color: #777777;
-}
+  color: #777; }
 
-.btn:hover{
+.btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px 10px rgb(0,0,0,.2);
-}
+  box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scale(1.2) scaleY(1.6);
+    /** Duplicate the size*/
+    opacity: 0; }
 
-.btn:active{
+.btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 5px 10px 10px rgb(0,0,0,.2);
-}
+  box-shadow: 0 5px 10px 10px rgba(0, 0, 0, 0.2); }
 
 .btn::after {
   content: "";
@@ -181,19 +113,48 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s;
-}
+  transition: all 0.4s; }
 
 .btn--white::after {
-  background-color: #fff;
-}
+  background-color: #fff; }
 
-.btn:hover::after {
-  transform: scale(1.2) scaleY(1.6); /** Duplicate the size*/
-  opacity: 0;
-}
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+  /*do the animation before the first status*/ }
 
-.btn--animated{
-  animation: moveInBottom .5s ease-out .75s;
-  animation-fill-mode: backwards; /*do the animation before the first status*/
-}
+.header {
+  height: 95vh;
+  position: relative;
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  border-style: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px; }
+  .header__logo {
+    height: 35px; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/

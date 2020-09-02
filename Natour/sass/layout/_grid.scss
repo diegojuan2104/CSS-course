@@ -1,0 +1,9 @@
+.row{
+    max-width: $grid-width; // Convention
+    background-color: #eee;
+    margin: 0 auto;
+    
+    &:not(:last-child){ // not() all except the last child
+        margin-bottom: $gutter-vertical;
+    }
+}
